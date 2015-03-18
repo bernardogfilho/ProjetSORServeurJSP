@@ -1,3 +1,8 @@
 .element-image {
 	max-height: 147px;
 }
+
+.centered-column {
+	float: none;
+	margin: auto;
+}
