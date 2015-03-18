@@ -44,7 +44,9 @@
        		          <li><a href="sign_in.jsp"><i class="fa fa-sign-in"></i> Connecter</a></li>
        		</c:if>
        		<c:if test="${utilisateur != null }">
-       			<li> <a>Bienvenue, ${utilisateur.getNomUtilisateur()}!</a></li>
+       			<li><a>
+       				Bienvenue, ${utilisateur.getNomUtilisateur()}! <c:if test="${admin}">(Administrateur)</c:if>
+    			</a></li>
        			<li><a href="deconnection"><i class="fa fa-sign-out"></i> Déconnecter</a></li>
        		</c:if>
         </ul>

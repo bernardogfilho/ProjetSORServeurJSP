@@ -50,8 +50,10 @@ public class Connection extends HttpServlet {
 			boolean auth = obj.authentifier(u);
 			System.out.println(auth);
 			if (auth) {
+				boolean admin = obj.authentifierAdmin(u);
 				request.setAttribute("message", "Vous avez connecté avec succès.");
 				request.getSession().setAttribute("utilisateur", u);
+				request.getSession().setAttribute("admin", admin);
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			} else {
 				request.setAttribute("message", "Le nom d'utilisateur ou le mot de passe ne sont pas correct.");
