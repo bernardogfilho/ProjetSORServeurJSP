@@ -41,7 +41,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
        		<c:if test="${utilisateur == null}">
-       		          <li><a href="sign_in.jsp"><i class="fa fa-sign-in"></i>Connecter</a></li>
+       		          <li><a href="sign_in.jsp"><i class="fa fa-sign-in"></i> Connecter</a></li>
        		</c:if>
        		<c:if test="${utilisateur != null }">
        			<li> <a>Bienvenue, ${utilisateur.getNomUtilisateur()}!</a></li>

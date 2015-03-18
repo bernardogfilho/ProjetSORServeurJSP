@@ -16,13 +16,13 @@ import beans.Utilisateur;
  * Servlet implementation class Authentification
  */
 @WebServlet("/authentifier")
-public class Authentification extends HttpServlet {
+public class Connection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Authentification() {
+    public Connection() {
         super();
         // TODO Auto-generated constructor stub
     }
