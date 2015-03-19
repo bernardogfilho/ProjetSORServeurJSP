@@ -5,9 +5,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 centered-column">
-			<c:if test="${message!= null}">
-				<div class="alert alert-warning" role="alert">
-					${message}
+			<c:if test="${notice!= null}">
+				<div class="alert alert-${notice.type}" role="alert">
+					${notice.content}
 				</div>
 			</c:if>
 			<div class="panel panel-default">

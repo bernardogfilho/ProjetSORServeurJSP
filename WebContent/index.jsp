@@ -6,11 +6,11 @@
 <jsp:include page="/shared/header.jsp"></jsp:include>
   
   <div class="container">
-  	<c:if test="${message != null}">
+  	<c:if test="${notice != null}">
 	  	<div class="row">
 	  		<div class="col-md-12">
-	  			<div class="alert alert-warning">
-	  				${message}
+	  			<div class="alert alert-${notice.type}">
+	  				${notice.content}
 	  			</div>
 	  		</div>
 	  	</div>

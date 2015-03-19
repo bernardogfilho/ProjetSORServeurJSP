@@ -1,10 +1,9 @@
 package ctrls;
+import beans.Menu;
+import rmi.DatabaseInterface;
+
 import java.rmi.Naming;
 import java.util.ArrayList;
-
-import beans.Menu;
-
-import rmi.DatabaseInterface;
 
 
 public class MenusCtrl {

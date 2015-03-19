@@ -51,12 +51,14 @@ public class Connection extends HttpServlet {
 			System.out.println(auth);
 			if (auth) {
 				boolean admin = obj.authentifierAdmin(u);
-				request.setAttribute("message", "Vous avez connecté avec succès.");
+				Notice notice = new Notice("success", "Vous avez connecté avec succès.");
+				request.setAttribute("notice", notice);
 				request.getSession().setAttribute("utilisateur", u);
 				request.getSession().setAttribute("admin", admin);
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			} else {
-				request.setAttribute("message", "Le nom d'utilisateur ou le mot de passe ne sont pas correct.");
+				Notice notice = new Notice("danger", "Le nom d'utilisateur ou le mot de passe ne sont pas correct.");
+				request.setAttribute("notice", notice);
 				getServletContext().getRequestDispatcher("/sign_in.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
