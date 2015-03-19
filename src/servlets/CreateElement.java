@@ -49,38 +49,31 @@ public class CreateElement extends HttpServlet {
 		try {
 			String nom = request.getParameter("nomElement");
 			String type = request.getParameter("typeElement");
-			
-			System.out.println("######");
-			System.out.println(nom);
-			System.out.println(type);
-			System.out.println("######");
-			
-			InputStream inputStream = null;
-			
-			Part filePart = request.getPart("image");
-			System.out.println(filePart);
-			if (filePart != null) {
-				System.out.println("NOME ARQUIVO: " + filePart.getName());
-				System.out.println("TAMANHO ARQUIVO: " + filePart.getSize());
-				System.out.println("TIPO ARQUIVO: " + filePart.getContentType());
-				
-				inputStream = filePart.getInputStream();
+			if(nom.length() < 1) {
+				Notice notice = new Notice("danger", "Le nom ne peut pas être vide.");
+				request.setAttribute("notice", notice);
+				getServletContext().getRequestDispatcher("/create_element.jsp").forward(request, response);	
+			} else {
+				InputStream inputStream = null;
+				Part filePart = request.getPart("image");
+				if (filePart != null) {
+					System.out.println("NOME ARQUIVO: " + filePart.getName());
+					System.out.println("TAMANHO ARQUIVO: " + filePart.getSize());
+					System.out.println("TIPO ARQUIVO: " + filePart.getContentType());
+					
+					inputStream = filePart.getInputStream();
+				}
+				String nomService = "rmi://localhost:1099/Database";
+				DatabaseInterface db = (DatabaseInterface) Naming.lookup(nomService);
+				Element el = new Element();
+				el.setNom(nom);
+				el.setType(type);
+				el.setImage(IOUtils.toByteArray(inputStream));
+				db.createElement(el);
+				Notice notice = new Notice("success", "Vous avez enregistré un element avec succès.");
+				request.setAttribute("notice", notice);
+				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);	
 			}
-			
-			System.out.println(inputStream);
-			
-			String nomService = "rmi://localhost:1099/Database";
-			DatabaseInterface db = (DatabaseInterface) Naming.lookup(nomService);
-			
-			Element el = new Element();
-
-			el.setNom(nom);
-			el.setType(type);
-			el.setImage(IOUtils.toByteArray(inputStream));
-			db.createElement(el);
-			Notice notice = new Notice("success", "Vous avez enregistré un element avec succès.");
-			request.setAttribute("notice", notice);
-			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);	
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

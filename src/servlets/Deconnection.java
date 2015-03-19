@@ -29,6 +29,7 @@ public class Deconnection extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("utilisateur");
+		session.setAttribute("admin", false);
 		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 

@@ -7,6 +7,15 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
+			<c:if test="${notice != null}">
+			  	<div class="row">
+			  		<div class="col-md-12">
+			  			<div class="alert alert-${notice.type}">
+			  				${notice.content}
+			  			</div>
+			  		</div>
+			  	</div>
+		  	</c:if>
 			<div class="well bs-component">
 				<form action="createElement" method="post" class="form-horizontal" enctype="multipart/form-data">
 					<fieldset>
@@ -22,7 +31,7 @@
 						<label for="typeElement" class="control-label col-lg-2">Type</label>
 						<div class="col-lg-10">
 							<select name="typeElement" class="form-control" id="typeElement">
-								<option value="Entrée">Entree</option>
+								<option value="Entree">Entrée</option>
 								<option value="Plat">Plat</option>
 								<option value="Dessert">Dessert</option>
 							</select>
