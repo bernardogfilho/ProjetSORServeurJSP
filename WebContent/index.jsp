@@ -18,9 +18,11 @@
   	<div class="row">
   		<div class="col-md-12">
 			<h1>Les Menus Disponibles <small>Pour ajourd'hui.</small></h1>
+			<a href="#" class="btn btn-primary" id="telechargerPdf"><i class="fa fa-download"></i> Télécharger PDF</a>
+			<br /><br />
   		</div>
   	</div>
-  	<div class="row">
+  	<div class="row" id="menus">
   		<c:forEach items="${menus.getMenus()}" var="menu">
 	  		<div class="col-md-3">
 	  			<div class="panel panel-default">
@@ -41,4 +43,22 @@
   	</div>
   </div>
 
+<!-- <script>
+  	$(document).ready(function(){
+  		$("#telechargerPdf").on("click", function(){
+  			var doc = new jsPDF();
+  			var specialElementHandlers = {
+  					'#editor': function(element, renderer){
+  						return true;
+  					}
+  				};
+  		   	doc.fromHTML($('body').get(0), 15, 15, {
+				'width': 170,
+				'elementHandlers': specialElementHandlers
+  		    });
+  			doc.save('menu.pdf');
+  		});
+  	});
+  </script> -->
+  
 <jsp:include page="/shared/footer.jsp"></jsp:include>
