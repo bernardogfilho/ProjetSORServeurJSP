@@ -43,22 +43,17 @@
   	</div>
   </div>
 
-<!-- <script>
+<script>
   	$(document).ready(function(){
   		$("#telechargerPdf").on("click", function(){
-  			var doc = new jsPDF();
-  			var specialElementHandlers = {
-  					'#editor': function(element, renderer){
-  						return true;
-  					}
-  				};
-  		   	doc.fromHTML($('body').get(0), 15, 15, {
-				'width': 170,
-				'elementHandlers': specialElementHandlers
-  		    });
-  			doc.save('menu.pdf');
+  			console.log("Processando pdf...");
+  			var pdf = new jsPDF();
+  		   	pdf.addHTML(document.body, function(){});
+  			setTimeout(function(){
+  				pdf.save('menu.pdf');
+  			}, 1000);
   		});
   	});
-  </script> -->
+</script>
   
 <jsp:include page="/shared/footer.jsp"></jsp:include>

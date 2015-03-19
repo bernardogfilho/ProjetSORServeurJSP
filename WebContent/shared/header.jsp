@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/jquery-ui.theme.min.css" />
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery-ui.min.js"></script>
+<script src="scripts/html2canvas.js"></script>
 <script src="scripts/jspdf.min.js"></script>
 <title>Menu</title>
 </head>
