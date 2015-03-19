@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
 <link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/jquery-ui.min.css" />
+<link rel="stylesheet" href="css/jquery-ui.structure.min.css" />
+<link rel="stylesheet" href="css/jquery-ui.theme.min.css" />
 <script src="scripts/jquery.min.js"></script>
+<script src="scripts/jquery-ui.min.js"></script>
 <script src="scripts/jspdf.min.js"></script>
 <title>Menu</title>
 </head>
@@ -27,11 +31,13 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <c:if test="${admin}">
-	      <ul class="nav navbar-nav navbar-left">
-	      	<li><a href="create_element.jsp">Créer element</a></li>
-	      </ul>
-      </c:if>
+		<ul class="nav navbar-nav navbar-left">
+			<li><a href="index.jsp"><i class="fa fa-home"></i> Accueil</a></li>
+      		<c:if test="${admin}">
+	      		<li><a href="gestion_menu.jsp"><i class="fa fa-cog"></i> Gestion des menus</a></li>
+			</c:if>  
+      </ul>
+      
         <ul class="nav navbar-nav navbar-right">
        		<c:if test="${utilisateur == null}">
        				<li><a href="sign_up.jsp"><i class="fa fa-pencil-square-o"></i> Enregistrer</a></li>
