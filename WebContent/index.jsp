@@ -18,11 +18,24 @@
   	<div class="row">
   		<div class="col-md-12">
 			<h1>Les Menus Disponibles <small>Pour ajourd'hui.</small></h1>
+		</div>
+		<div class="col-md-2">
+			<br />
 			<a href="#" class="btn btn-primary" id="telechargerPdf"><i class="fa fa-download"></i> Télécharger PDF</a>
-			<br /><br />
-  		</div>
-  	</div>
-  	<div class="row" id="menus">
+		</div>
+		<div class="col-md-10">
+			<label for="">Taille</label>
+				<select name="" id="" class="photo-size form-control">
+					<option value="80px">Petite</option>
+					<option value="150px">Moyenne</option>
+					<option value="220px">Grande</option>
+				</select>
+		</div>
+	</div>
+	<br />
+	<br />
+	<br />
+	<div class="row">
   		<c:forEach items="${menus.getMenus()}" var="menu">
 	  		<div class="col-md-3">
 	  			<div class="panel panel-default">
@@ -31,7 +44,8 @@
 	  					<ul class="list-unstyled">
 	  						<c:forEach items="${menu.getElements()}" var="element">
 	  							<li>
-	  								<img class="img-responsive" src="/ProjetSORServeurJSP/images/${element.id}">
+	  								<div class="photo" style="background-image:url('/ProjetSORServeurJSP/images/${element.id}')"></div>
+	  								<%-- <img class="img-responsive" src="/ProjetSORServeurJSP/images/${element.id}"> --%>
 	  								<strong>${element.getType()}</strong> <i>${element.getNom()}</i>
 	  							</li>
 	  						</c:forEach>
@@ -52,6 +66,11 @@
   			setTimeout(function(){
   				pdf.save('menu.pdf');
   			}, 1000);
+  		});
+  		
+  		$(".photo-size").on("change", function(){
+  			var value = $(this).val();
+  			$(".photo").css("height", value);
   		});
   	});
 </script>

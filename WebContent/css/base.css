@@ -6,3 +6,12 @@
 	float: none;
 	margin: auto;
 }
+
+.photo {
+	min-height: 80px;
+	background: 100%; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
